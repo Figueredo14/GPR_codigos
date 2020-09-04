@@ -114,3 +114,9 @@ wv, twv = mexhat(samples, time,2.6*10**9)
 matriz_diff = np.block([np.diff(matriz),np.zeros([traces,1])])
 
 matriz_mig = migrate(matriz_diff,traces,samples,dt_samples,(traces/2),wv,ds_trace,(prof/samples),(10*10**-2)/(1*10**-9))
+
+plt.imshow(matriz_mig.T,aspect='auto',interpolation='bicubic', cmap=plt.cm.seismic,extent=[0, 66, 130, 0])
+plt.colorbar()
+plt.xlabel('Distância (cm)')
+plt.ylabel('Profundidade (cm)')
+plt.savefig('Radargrama_mig_seis.eps',bbox_inches = "tight")
